@@ -77,12 +77,31 @@
         <algorithm type = "LArSimpleClusterCreation" description = "ClusterRebuilding"/>
     </algorithm>
 
+    <!--algorithm type = "LArVisualMonitoring">
+        <ShowCurrentClusters>true</ShowCurrentClusters>
+        <ShowDetector>true</ShowDetector>
+    </algorithm-->
+
     <!-- VertexAlgorithms -->
+    <algorithm type = "LArDirectionClusterSplitting">
+        <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
+        <tool type = "LArTrackDirectionTool" description = "TrackDirection"></tool>
+    </algorithm>
+
+    <!--algorithm type = "LArVisualMonitoring">
+        <ShowCurrentClusters>true</ShowCurrentClusters>
+        <ShowDetector>true</ShowDetector>
+    </algorithm-->
+
     <algorithm type = "LArCandidateVertexCreation">
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
         <OutputVertexListName>CandidateVertices3D</OutputVertexListName>
         <ReplaceCurrentVertexList>true</ReplaceCurrentVertexList>
         <EnableCrossingCandidates>true</EnableCrossingCandidates>
+        <tool type = "LArTrackDirectionTool" description = "TrackDirection">
+            <WriteTable>false</WriteTable>
+            <EnableSplitting>true</EnableSplitting>
+        </tool>
     </algorithm>
     <algorithm type = "LArCutClusterCharacterisation">
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
@@ -102,6 +121,7 @@
             <tool type = "LArShowerAsymmetryFeature"/>
             <tool type = "LArRPhiFeature"/>
         </FeatureTools>
+        <tool type = "LArTrackDirectionTool" description = "TrackDirection"></tool>
     </algorithm>
     <algorithm type = "LArCutClusterCharacterisation">
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
@@ -110,6 +130,7 @@
     <algorithm type = "LArVertexSplitting">
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
     </algorithm>
+
 
     <!-- ThreeDTrackAlgorithms -->
     <algorithm type = "LArThreeDTransverseTracks">
@@ -345,6 +366,21 @@
     </algorithm>
     <algorithm type = "LArNeutrinoProperties">
         <NeutrinoPfoListName>NeutrinoParticles3D</NeutrinoPfoListName>
+    </algorithm>
+
+    <algorithm type = "LArDirectionAnalysis">
+        <MCParticleListName>Input</MCParticleListName>
+        <InputHitListName>Input</InputHitListName>
+        <ClusterListName>ClustersW</ClusterListName>
+        <VertexListName>NeutrinoVertices3D</VertexListName>
+        <PfoListName>TrackParticles3D</PfoListName>
+        <ParticleContained>true</ParticleContained>
+        <Cosmic>false</Cosmic>
+        <Data>false</Data>
+        <DrawFit>false</DrawFit>
+        <WriteToTree>true</WriteToTree>
+        <OutputFile>Output.root</OutputFile>
+        <tool type = "LArTrackDirectionTool" description = "TrackDirection"></tool>
     </algorithm>
 
     <!-- Output list management -->
