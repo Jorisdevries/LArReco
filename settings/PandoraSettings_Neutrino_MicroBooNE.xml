@@ -111,7 +111,7 @@
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
         <OutputVertexListName>NeutrinoVertices3D</OutputVertexListName>
         <ReplaceCurrentVertexList>true</ReplaceCurrentVertexList>
-        <SvmFileName>PandoraSvm_v03_11_00.xml</SvmFileName>
+        <SvmFileName>PandoraSvm_v03_11_00_new.xml</SvmFileName>
         <RegionSvmName>VertexSelectionRegion</RegionSvmName>
         <VertexSvmName>VertexSelectionVertex</VertexSvmName>
         <FeatureTools>
@@ -122,6 +122,7 @@
             <tool type = "LArRPhiFeature"/>
         </FeatureTools>
         <tool type = "LArTrackDirectionTool" description = "TrackDirection"></tool>
+        <EnableDirection>true</EnableDirection>
     </algorithm>
     <algorithm type = "LArCutClusterCharacterisation">
         <InputClusterListNames>ClustersU ClustersV ClustersW</InputClusterListNames>
@@ -346,9 +347,9 @@
         <TrackPfoListName>TrackParticles3D</TrackPfoListName>
         <ShowerPfoListName>ShowerParticles3D</ShowerPfoListName>
         <UseThreeDInformation>true</UseThreeDInformation>
-        <SvmFileName>PandoraSvm_v03_11_00.xml</SvmFileName>
+        <SvmFileName>PandoraSvm_v03_11_00_new.xml</SvmFileName>
         <SvmName>PfoCharacterisation</SvmName>
-        <SvmFileNameNoChargeInfo>PandoraSvm_v03_11_00.xml</SvmFileNameNoChargeInfo>
+        <SvmFileNameNoChargeInfo>PandoraSvm_v03_11_00_new.xml</SvmFileNameNoChargeInfo>
         <SvmNameNoChargeInfo>PfoCharacterisationNoChargeInfo</SvmNameNoChargeInfo>
         <FeatureTools>
             <tool type = "LArThreeDLinearFitFeatureTool"/>
@@ -373,7 +374,7 @@
         <InputHitListName>Input</InputHitListName>
         <ClusterListName>ClustersW</ClusterListName>
         <VertexListName>NeutrinoVertices3D</VertexListName>
-        <PfoListName>TrackParticles3D</PfoListName>
+        <PfoListName>NeutrinoParticles3D</PfoListName>
         <ParticleContained>true</ParticleContained>
         <Cosmic>false</Cosmic>
         <Data>false</Data>
